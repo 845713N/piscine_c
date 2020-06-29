@@ -1,0 +1,5 @@
+Credentials cache: API:DF768702-537D-400B-B416-7D25FB2647CE
+        Principal: bzalugas@42.FR
+
+  Issued                Expires               Principal
+Jun 29 14:36:20 2020  Jul  6 14:36:10 2020  krbtgt/42.FR@42.FR
