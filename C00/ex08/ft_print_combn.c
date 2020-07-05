@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_combn.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rsanchez <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bzalugas <bzalugas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/02 10:14:13 by rsanchez          #+#    #+#             */
-/*   Updated: 2020/07/02 15:25:35 by rsanchez         ###   ########.fr       */
+/*   Created: 2020/07/03 09:44:39 by bzalugas          #+#    #+#             */
+/*   Updated: 2020/07/05 16:43:16 by bzalugas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,84 +17,70 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-int		ft_check(int num[], int n)
+int		check_ascending(int *tab, int n)
 {
-	int	i;
-	int	j;
+	int i;
 
-	i = 0;
-	j = 1;
-	while (j < n)
+	i = n - 1;
+	while (i > 0)
 	{
-		if (!(num[i] < num[j]))
-		{
+		if (tab[i] <= tab[i - 1])
 			return (0);
-		}
-		i++;
-		j++;
+		i--;
 	}
 	return (1);
 }
 
-void	ft_increment(int num[], int n)
+void	increment(int *tab, int n)
 {
 	int i;
 
-	if (num[n - 1] == 9)
+	i = n - 1;
+	tab[i]++;
+	while (i > 0)
 	{
-		i = n - 2;
-		num[n - 1] = 0;
-		while (i >= 0 && num[i] == 9)
+		while (tab[i] <= tab[i - 1] && i > 0)
+			tab[i]++;
+		while (tab[i] > 9 && i > 0)
 		{
-			num[i] = 0;
-			i--;
+			tab[i] = 0;
+			tab[i - 1]++;
 		}
-		if (i >= 0)
-			num[i]++;
-		else
-		{
-			num[0] = 10;
-		}
+		i--;
 	}
-	else
-	{
-		num[n - 1]++;
-	}
+	if (!check_ascending(tab, n))
+		increment(tab, n);
 }
 
-void	ft_send(int num[], int n)
+void	display(int *tab, int n)
 {
 	int i;
 
 	i = 0;
 	while (i < n)
-	{
-		ft_putchar(num[i] + 48);
-		i++;
-	}
-	if ((num[0] < 10 - n))
-	{
+		ft_putchar(tab[i++] + 48);
+	if (!(tab[0] >= 10 - n))
 		write(1, ", ", 2);
-	}
 }
 
 void	ft_print_combn(int n)
 {
-	int num[n];
+	int tab[10];
 	int i;
 
 	i = 0;
-	while (i < n)
+	if (n > 1 && n < 10)
 	{
-		num[i] = 0;
-		i++;
-	}
-	while (num[0] < 10)
-	{
-		if (ft_check(num, n) == 1)
+		while (i < n)
+			tab[i++] = 0;
+		while (tab[0] < 10 - n)
 		{
-			ft_send(num, n);
+			increment(tab, n);
+			display(tab, n);
 		}
-		ft_increment(num, n);
+	}
+	else if (n == 1)
+	{
+		write(1, "0, 1, 2, 3, 4, 5, 6, 7, 8, 9", 28);
 	}
 }
