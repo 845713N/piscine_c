@@ -6,7 +6,7 @@
 /*   By: bzalugas <bzalugas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 14:36:09 by bzalugas          #+#    #+#             */
-/*   Updated: 2020/07/07 11:53:01 by bzalugas         ###   ########.fr       */
+/*   Updated: 2020/07/07 19:32:08 by bzalugas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,10 @@ char	*ft_strcapitalize(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (is_new_word(str, i))
-			if (is_l_case(str[i]))
-				str[i] -= 32;
+		if (is_new_word(str, i) && is_l_case(str[i]))
+			str[i] -= 32;
+		else if (!is_new_word(str, i) && is_u_case(str[i]))
+			str[i] += 32;
 		i++;
 	}
 	return (str);

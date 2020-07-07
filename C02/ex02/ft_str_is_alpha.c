@@ -6,7 +6,7 @@
 /*   By: bzalugas <bzalugas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/06 11:21:27 by bzalugas          #+#    #+#             */
-/*   Updated: 2020/07/06 20:17:01 by bzalugas         ###   ########.fr       */
+/*   Updated: 2020/07/07 15:05:56 by bzalugas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	ft_str_is_alpha(char *str)
 	{
 		test_upper = (('Z' - str[i] < 26) && ('Z' - str[i] >= 0));
 		test_lower = (('z' - str[i] < 26) && ('z' - str[i] >= 0));
-		if (!((test_upper) || (test_lower)))
+		if (!(test_upper || test_lower))
 			return (0);
 		i++;
 	}
