@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bzalugas <bzalugas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/07 13:29:31 by bzalugas          #+#    #+#             */
-/*   Updated: 2020/07/09 12:06:37 by bzalugas         ###   ########.fr       */
+/*   Created: 2020/07/09 08:35:26 by bzalugas          #+#    #+#             */
+/*   Updated: 2020/07/09 08:35:32 by bzalugas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(char *s1, char *s2)
+char	*ft_strstr(char *str, char *to_find)
 {
-	int diff;
 	int i;
+	int i_t;
+	int occurrence;
 
 	i = 0;
-	diff = 0;
-	while (diff == 0 && (s1[i] || s2[i]))
+	i_t = 0;
+	occurrence = 0;
+	if (!to_find[0])
+		return (str);
+	while (str[i])
 	{
-		diff = (unsigned char)s1[i] - (unsigned char)s2[i];
-		i++;
+		i_t = 0;
+		while (str[i + i_t] == to_find[i_t] && to_find[i_t])
+			i_t++;
+		if (!to_find[i_t])
+			return (&str[i]);
+		else
+			i++;
 	}
-	return (diff);
+	return (0);
 }

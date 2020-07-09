@@ -21,5 +21,6 @@ char	*ft_strcat(char *dest, char *src)
 	i = 0;
 	while (src[i])
 		dest[end_dest++] = src[i++];
+	dest[end_dest] = 0;
 	return (dest);
 }
