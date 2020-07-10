@@ -6,7 +6,7 @@
 /*   By: bzalugas <bzalugas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 21:28:12 by bzalugas          #+#    #+#             */
-/*   Updated: 2020/07/09 22:39:36 by bzalugas         ###   ########.fr       */
+/*   Updated: 2020/07/10 15:14:04 by bzalugas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,22 @@ int		ft_strlen(char *str)
 int		is_valid(char *base, int len_base)
 {
 	int i;
+	int j;
 
 	i = 0;
 	if (len_base > 1)
 	{
 		while (i < len_base - 1)
 		{
-			if (base[i] == base[i + 1] || base[i] == '+' || base[i] == '-')
+			if (base[i] == '+' || base[i] == '-')
 				return (0);
+			j = 0;
+			while (base[j])
+			{
+				if (base[i] == base[j] && i != j)
+					return (0);
+				j++;
+			}
 			i++;
 		}
 		return (1);
@@ -48,13 +56,24 @@ int		is_valid(char *base, int len_base)
 
 void	ft_putnbr_base(int nbr, char *base)
 {
-	int i;
-	int len_base;
+	int		i;
+	int		len_base;
 
 	len_base = ft_strlen(base);
 	i = 0;
 	if (is_valid(base, len_base))
 	{
+		if (nbr < 0)
+		{
+			ft_putchar('-');
+			if (nbr == -2147483648)
+			{
+				ft_putnbr_base((unsigned int)nbr / len_base, base);
+				ft_putchar(base[(unsigned int)nbr % len_base]);
+			}
+			else
+				nbr *= -1;
+		}
 		if (nbr > len_base)
 			ft_putnbr_base(nbr / len_base, base);
 		ft_putchar(base[nbr % len_base]);

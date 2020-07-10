@@ -1,31 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_atoi_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bzalugas <bzalugas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/09 11:04:38 by bzalugas          #+#    #+#             */
-/*   Updated: 2020/07/10 15:17:07 by bzalugas         ###   ########.fr       */
+/*   Created: 2020/07/10 11:11:39 by bzalugas          #+#    #+#             */
+/*   Updated: 2020/07/10 11:11:42 by bzalugas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	strlen_nb(char *str)
+int	ft_strlen(char *str)
 {
-	int				i;
-	unsigned int	power;
+    int i;
 
-	power = 1;
-	i = 1;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		power *= 10;
-		i++;
-	}
-	return (power);
+    i = 0;
+    while (str[i])
+	i++;
+    return (i);
 }
 
-int	ft_atoi(char *str)
+int	is_valid(char *base, int len_base)
+{
+    int i;
+    
+    i = 0;
+    if (len_base > 1)
+	{
+	    while (i < len_base - 1)
+		{
+		    if (base [i] == base[i + 1] || base[i] == '+' || base[i] == '-')
+			return (0);
+		    i++;
+		}
+	    return (1);
+	}
+    else
+	return (0);
+}
+
+int    ft_atoi(char *str)
 {
 	int				i;
 	unsigned int	nb;
@@ -52,4 +66,37 @@ int	ft_atoi(char *str)
 		i++;
 	}
 	return (nb * sign);
+}
+
+char	*putnbr_base(int nbr, char *base)
+{
+	int	i;
+	int	len_base;
+	char	*str_nb;
+
+	len_base = ft_strlen(base);
+	i = 0;
+	if (is_valid(base, len_base))
+	{
+		if (nbr < 0)
+		{
+		    nbr *= -1;
+		}
+		if (nbr > len_base)
+			str_nb(nbr / len_base, base);
+		ft_putchar(base[nbr % len_base]);
+	}
+}
+
+int	ft_atoi_base(char *str, char *base)
+{
+    int		i;
+    int		nb;
+    char	*str_nb;
+
+    if (is_valid(base))
+	{
+	    nb = ft_atoi(str);
+	}
+    
 }
