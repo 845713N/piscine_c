@@ -6,7 +6,7 @@
 /*   By: bzalugas <bzalugas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 21:28:12 by bzalugas          #+#    #+#             */
-/*   Updated: 2020/07/10 15:14:04 by bzalugas         ###   ########.fr       */
+/*   Updated: 2020/07/14 12:10:07 by bzalugas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int		is_valid(char *base, int len_base)
 	i = 0;
 	if (len_base > 1)
 	{
-		while (i < len_base - 1)
+		while (i < len_base)
 		{
 			if (base[i] == '+' || base[i] == '-')
 				return (0);
@@ -74,8 +74,13 @@ void	ft_putnbr_base(int nbr, char *base)
 			else
 				nbr *= -1;
 		}
-		if (nbr > len_base)
+		if (nbr >= len_base)
 			ft_putnbr_base(nbr / len_base, base);
 		ft_putchar(base[nbr % len_base]);
 	}
+}
+
+int	main()
+{
+	ft_putnbr_base(-2147483648, "0123456789+");
 }
