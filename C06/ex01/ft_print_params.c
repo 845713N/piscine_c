@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_program_name.c                            :+:      :+:    :+:   */
+/*   ft_print_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bzalugas <bzalugas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/14 20:39:00 by bzalugas          #+#    #+#             */
-/*   Updated: 2020/07/16 14:43:01 by bzalugas         ###   ########.fr       */
+/*   Created: 2020/07/16 11:52:08 by bzalugas          #+#    #+#             */
+/*   Updated: 2020/07/16 14:43:10 by bzalugas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
-
-int		main(int argc, char **argv)
+void	ft_putstr(char *str)
 {
 	int i;
 
 	i = 0;
-	(void)argc;
-	while (argv[0][i])
-		ft_putchar(argv[0][i++]);
+	while (str[i])
+	{
+		write(1, &str[i], sizeof(str[i]));
+		i++;
+	}
+	write(1, "\n", 1);
+}
+
+void	print_params(int argc, char **params)
+{
+	int i;
+
+	i = 1;
+	while (i < argc)
+		ft_putstr(params[i++]);
+}
+
+int		main(int argc, char **argv)
+{
+	print_params(argc, argv);
 	return (0);
 }
