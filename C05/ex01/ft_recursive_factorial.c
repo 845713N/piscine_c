@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_iterative_factorial.c                           :+:      :+:    :+:   */
+/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bzalugas <bzalugas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/10 15:53:25 by bzalugas          #+#    #+#             */
-/*   Updated: 2020/07/11 23:59:52 by bzalugas         ###   ########.fr       */
+/*   Created: 2020/07/15 19:50:28 by bzalugas          #+#    #+#             */
+/*   Updated: 2020/07/15 19:50:42 by bzalugas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_iterative_factorial(int nb)
+int	ft_recursive_factorial(int nb)
 {
 	if (nb > 0)
-		return (nb * ft_iterative_factorial(nb - 1));
+		return (nb * ft_recursive_factorial(nb - 1));
 	else
-		return (1);
+		return (0);
 }
