@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bzalugas <bzalugas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/15 19:50:28 by bzalugas          #+#    #+#             */
-/*   Updated: 2020/07/16 15:51:33 by bzalugas         ###   ########.fr       */
+/*   Created: 2020/07/16 19:54:01 by bzalugas          #+#    #+#             */
+/*   Updated: 2020/07/16 20:07:27 by bzalugas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_recursive_factorial(int nb)
+#include <stdlib.h>
+
+char	*ft_strdup(char *src)
 {
-	if (nb > 0)
-		return (nb * ft_recursive_factorial(nb - 1));
-	else if (nb == 0)
-		return (1);
-	else
-		return (0);
+	char *dest;
+
+	dest = malloc(sizeof(src));
+	dest = src;
+	return (dest);
 }

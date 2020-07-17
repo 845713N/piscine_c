@@ -6,7 +6,7 @@
 /*   By: bzalugas <bzalugas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/09 21:28:12 by bzalugas          #+#    #+#             */
-/*   Updated: 2020/07/14 12:10:07 by bzalugas         ###   ########.fr       */
+/*   Updated: 2020/07/15 13:55:44 by bzalugas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,4 @@ void	ft_putnbr_base(int nbr, char *base)
 			ft_putnbr_base(nbr / len_base, base);
 		ft_putchar(base[nbr % len_base]);
 	}
-}
-
-int	main()
-{
-	ft_putnbr_base(-2147483648, "0123456789+");
 }
