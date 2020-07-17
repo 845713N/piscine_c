@@ -6,7 +6,7 @@
 /*   By: bzalugas <bzalugas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/03 09:44:39 by bzalugas          #+#    #+#             */
-/*   Updated: 2020/07/05 16:43:16 by bzalugas         ###   ########.fr       */
+/*   Updated: 2020/07/05 23:08:23 by bzalugas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,10 @@ void	ft_print_combn(int n)
 	{
 		write(1, "0, 1, 2, 3, 4, 5, 6, 7, 8, 9", 28);
 	}
+}
+
+int	main(void)
+{
+	int n = 8;
+	ft_print_combn(n);
 }

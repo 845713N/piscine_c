@@ -6,7 +6,7 @@
 /*   By: huthiess <huthiess@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/12 22:59:52 by huthiess          #+#    #+#             */
-/*   Updated: 2020/07/12 23:41:21 by huthiess         ###   ########.fr       */
+/*   Updated: 2020/07/15 14:46:14 by bzalugas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		valid_views(char *tab, t_param_view *param_view, int required_views)
 			return (0);
 		param_view->start += param_view->step;
 	}
-	if (!(param_view->rev) && param_view->end == eol)
+	if ((!(param_view->rev) && param_view->end == eol) || param_view->rev)
 		return (views == required_views);
 	return (1);
 }
