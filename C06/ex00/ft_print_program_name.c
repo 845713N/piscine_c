@@ -6,7 +6,7 @@
 /*   By: bzalugas <bzalugas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/14 20:39:00 by bzalugas          #+#    #+#             */
-/*   Updated: 2020/07/16 14:43:01 by bzalugas         ###   ########.fr       */
+/*   Updated: 2020/07/20 12:24:01 by bzalugas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ int		main(int argc, char **argv)
 	(void)argc;
 	while (argv[0][i])
 		ft_putchar(argv[0][i++]);
+	ft_putchar('\n');
 	return (0);
 }

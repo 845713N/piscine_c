@@ -6,7 +6,7 @@
 /*   By: bzalugas <bzalugas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/16 14:22:36 by bzalugas          #+#    #+#             */
-/*   Updated: 2020/07/16 14:43:20 by bzalugas         ###   ########.fr       */
+/*   Updated: 2020/07/20 12:32:15 by bzalugas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	ft_putstr(char *str)
 		write(1, &str[i], sizeof(str[i]));
 		i++;
 	}
-	write(1, "\n", 1);
 }
 
 void	print_rev_params(int argc, char **params)
@@ -31,7 +30,10 @@ void	print_rev_params(int argc, char **params)
 
 	i = argc - 1;
 	while (i > 0)
+	{
 		ft_putstr(params[i--]);
+		ft_putstr("\n");
+	}
 }
 
 int		main(int argc, char **argv)
