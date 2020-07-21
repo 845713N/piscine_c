@@ -6,7 +6,7 @@
 /*   By: bzalugas <bzalugas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 17:27:25 by bzalugas          #+#    #+#             */
-/*   Updated: 2020/07/20 19:09:26 by bzalugas         ###   ########.fr       */
+/*   Updated: 2020/07/21 07:47:05 by bzalugas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int		total_len(int size, char **strs, char *sep)
 
 	nb_str = ft_strlen(*strs);
 	sep_size = ft_strlen(sep);
-
 	return (size + (nb_str * sep_size));
 }
 
@@ -39,7 +38,7 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	int		i;
 	int		j;
 	int		k;
- 
+
 	if (size == 0)
 		n_str = 0;
 	else
@@ -48,7 +47,7 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 		j = -1;
 		k = 0;
 		n_str = malloc(sizeof(n_str) * total_len(size, strs, sep));
-		while(j++ < size - 1)
+		while (j++ < size - 1)
 		{
 			i = 0;
 			while (strs[j][i])
