@@ -6,7 +6,7 @@
 /*   By: bzalugas <bzalugas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 07:48:47 by bzalugas          #+#    #+#             */
-/*   Updated: 2020/07/21 13:58:23 by bzalugas         ###   ########.fr       */
+/*   Updated: 2020/07/21 14:40:09 by bzalugas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		is_charset(char c, char *charset)
 
 	i = 0;
 	while (charset[i])
-		if (charset [i++] == c)
+		if (charset[i++] == c)
 			return (1);
 	return (0);
 }
@@ -33,7 +33,7 @@ int		is_new_word(char *str, int i, char *charset)
 			return (1);
 	}
 	else if (i == 0)
-
+		return (0);
 	return (0);
 }
 
@@ -51,7 +51,7 @@ int		*len_w(char *str, char *charset, int count)
 	j = 0;
 	while (str[i])
 	{
-		while(!is_charset(str[i++], charset))
+		while (!is_charset(str[i++], charset))
 			tab[j]++;
 		j++;
 	}
