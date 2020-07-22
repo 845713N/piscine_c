@@ -6,7 +6,7 @@
 /*   By: bzalugas <bzalugas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 17:27:25 by bzalugas          #+#    #+#             */
-/*   Updated: 2020/07/21 07:47:05 by bzalugas         ###   ########.fr       */
+/*   Updated: 2020/07/22 20:23:05 by bzalugas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,14 @@ int		total_len(int size, char **strs, char *sep)
 {
 	int		nb_str;
 	int		sep_size;
+	int		i;
 
-	nb_str = ft_strlen(*strs);
+	i = 0;
+	nb_str = 0;
+	while (strs[i])
+		nb_str += ft_strlen(strs[i++]);
 	sep_size = ft_strlen(sep);
-	return (size + (nb_str * sep_size));
+	return (nb_str + sep_size * (size - 1) + 1);
 }
 
 char	*ft_strjoin(int size, char **strs, char *sep)

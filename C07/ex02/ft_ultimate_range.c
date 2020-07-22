@@ -6,7 +6,7 @@
 /*   By: bzalugas <bzalugas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 14:40:21 by bzalugas          #+#    #+#             */
-/*   Updated: 2020/07/21 07:44:47 by bzalugas         ###   ########.fr       */
+/*   Updated: 2020/07/22 20:17:45 by bzalugas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_ultimate_range(int **range, int min, int max)
 		if (!(range = malloc(sizeof(range))))
 			return (-1);
 		range = NULL;
-		return (-1);
+		return (0);
 	}
 	else
 	{
