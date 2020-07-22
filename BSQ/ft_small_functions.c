@@ -6,7 +6,7 @@
 /*   By: adpillia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 11:25:19 by adpillia          #+#    #+#             */
-/*   Updated: 2020/07/22 10:25:32 by bzalugas         ###   ########.fr       */
+/*   Updated: 2020/07/22 20:03:59 by adpillia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,33 +41,40 @@ int		ft_cmp(char c, char *str)
 t_data	ft_complete_check_file(char *file, t_data input)
 {
 	char	*fl;
-	int		fd;
 
-	fl = ft_recup_first_line(input, file, 0, 0);
-	input = ft_analyse_first_line(input, file, 0, 0);
-	fd = open(file, 0);
-	input = ft_analyse_file(fd, input, fl, 0);
-	close(fd);
-	free(fl);
+	fl = ft_recup_first_line(input, file, 0);
+	input = ft_analyse_first_line(input, 0, 0, file);
+	input = ft_analyse_file(file, input, fl, 0);
 	input.max = input.line * input.col;
 	return (input);
 }
 
 void	ft_magic(char *file, t_data input)
 {
-	int		fd;
 	int		*map;
 	t_bsq	bsq;
 
 	map = NULL;
-	fd = open(file, 0);
-	map = ft_recup_file(input, 0, fd);
+	map = ft_recup_file(input, 0, 0, file);
 	bsq = ft_initialise_square(input);
 	while (bsq.end == 0)
 		bsq = ft_move(bsq, map, input);
+//	bsq = ft_bigger_move_recursive(bsq, map, input);
 	map = ft_square_placement(map, bsq, input);
 	ft_display_output(map, input);
-	close(fd);
 	free(map);
 }
 
+t_bsq	ft_bigger_move_recursive(t_bsq bsq, int *map, t_data file)
+{
+	bsq = ft_go_bigger(bsq, map, file);
+	if (ft_check_square_position(map, bsq, file) == 1)
+		return (ft_bigger_move_recursive(bsq, map, file));
+	bsq = ft_move(bsq, map, file);
+	if (ft_check_square_position(map, bsq, file) == 0)
+		return (ft_bigger_move_recursive(bsq, map, file));
+	if (bsq.end == 1)
+		return (bsq);
+	else
+		return (ft_bigger_move_recursive(bsq, map, file));
+}

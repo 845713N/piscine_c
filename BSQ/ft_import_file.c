@@ -6,7 +6,7 @@
 /*   By: bzalugas <bzalugas@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/22 10:01:47 by bzalugas          #+#    #+#             */
-/*   Updated: 2020/07/22 12:00:39 by bzalugas         ###   ########.fr       */
+/*   Updated: 2020/07/22 20:08:27 by adpillia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,32 @@ t_buf	swap(int fd, int i, char *output, char *temp)
 	return (buf);
 }
 
+t_buf	ft_clean_output(t_buf buf)
+{
+	int		i;
+	int		j;
+	char	*n_buf;
+
+	i = 0;
+	while (buf.file[i])
+		if (buf.file[i] == '\n')
+			i++;
+	n_buf = malloc(sizeof(n_buf) * (buf.length - i - 1));
+	i = 0;
+	while (buf.file[i] != '\n')
+		i++;
+	i++;
+	j = 0;
+	while (buf.file[i])
+	{
+		if (buf.file[i] != '\n')
+			n_buf[j++] = buf.file[i];
+		i++;
+	}
+	buf.file = n_buf;
+	return (buf);
+}
+
 t_buf	ft_import_file(char *file)
 {
 	int		fd;
@@ -53,4 +79,17 @@ t_buf	ft_import_file(char *file)
 	if ((fd = open(file, 0)) == -1)
 		buf.length = 0;
 	return (swap(fd, 0, output, temp));
+}
+
+t_buf	get_stdin(char *file)
+{
+	t_buf	buf;
+	int		fd;
+	char	c;
+
+	if (!(fd = open(file, O_TRUNC | O_CREAT | O_WRONLY, 0666)))
+		buf.length = 0;
+	while (read(0, &c, 1) > 0)
+		write(fd, &c, 1);
+	return (buf);
 }
