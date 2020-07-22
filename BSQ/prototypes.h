@@ -6,7 +6,7 @@
 /*   By: adpillia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 19:42:57 by adpillia          #+#    #+#             */
-/*   Updated: 2020/07/22 07:46:19 by adpillia         ###   ########.fr       */
+/*   Updated: 2020/07/22 11:58:24 by bzalugas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ int		ft_check_square_position(int *map, t_bsq bsq, t_data file);
 t_bsq	ft_go_bigger(t_bsq bsq, int *map, t_data file);
 t_bsq	ft_move(t_bsq bsq, int *map, t_data file);
 void	ft_magic(char *file, t_data input);
+t_buf	ft_import_file(char *file);
+t_buf	swap(int fd, int i, char *output, char *temp);
 
 #endif

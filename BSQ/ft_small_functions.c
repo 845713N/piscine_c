@@ -6,7 +6,7 @@
 /*   By: adpillia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 11:25:19 by adpillia          #+#    #+#             */
-/*   Updated: 2020/07/22 07:39:56 by adpillia         ###   ########.fr       */
+/*   Updated: 2020/07/22 10:25:32 by bzalugas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,3 +70,4 @@ void	ft_magic(char *file, t_data input)
 	close(fd);
 	free(map);
 }
+

@@ -6,7 +6,7 @@
 /*   By: adpillia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 19:04:55 by adpillia          #+#    #+#             */
-/*   Updated: 2020/07/22 07:55:13 by adpillia         ###   ########.fr       */
+/*   Updated: 2020/07/22 12:00:58 by bzalugas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,18 @@ int		main(int argc, char **argv)
 {
 	t_data	input;
 	int		files;
+	char	*test;
+	t_buf	buf;
 
 	files = 1;
 	while (files < argc && argc > 1)
 	{
 		input = ft_initialize_data();
+		buf = ft_import_file(argv[files]);
+		if(!(test = malloc(sizeof(test) * buf.length)))
+		   return (1);
+		test = buf.file;
+		printf("%s\n", test);
 		input = ft_complete_check_file(argv[files], input);
 		if (input.error == 0)
 			ft_magic(argv[files], input);
@@ -35,6 +42,7 @@ int		main(int argc, char **argv)
 		files++;
 		if (files != argc)
 			write(1, "\n", 1);
+		free(test);
 	}
 	return (0);
 }

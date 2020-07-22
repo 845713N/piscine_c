@@ -6,7 +6,7 @@
 /*   By: adpillia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 19:43:50 by adpillia          #+#    #+#             */
-/*   Updated: 2020/07/21 18:57:37 by adpillia         ###   ########.fr       */
+/*   Updated: 2020/07/22 12:02:46 by bzalugas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,13 @@ struct	s_bsq
 	unsigned int y_prev;
 	unsigned int check_bigger;
 	unsigned int end;
+};
+
+typedef struct s_buf	t_buf;
+struct	s_buf
+{
+	int		length;
+	char	*file;
 };
 
 #endif
