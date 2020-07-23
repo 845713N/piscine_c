@@ -6,7 +6,7 @@
 /*   By: adpillia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 13:39:46 by adpillia          #+#    #+#             */
-/*   Updated: 2020/07/22 20:04:07 by adpillia         ###   ########.fr       */
+/*   Updated: 2020/07/23 12:33:54 by bzalugas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ int		ft_check_square_position(int *map, t_bsq bsq, t_data file)
 	while (j < bsq.length)
 	{
 		if (map[i + j] == 1
-				|| (i + j) / file.col >= file.line
-				|| (i + j) % file.col >= file.col
-				|| i / file.col != (i + j) / file.col)
+			|| (i + j) / file.col >= file.line
+			|| (i + j) % file.col >= file.col
+			|| i / file.col != (i + j) / file.col)
 			return (0);
 		if (j == bsq.length - 1 && k < bsq.length - 1)
 		{

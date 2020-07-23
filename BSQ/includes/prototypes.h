@@ -6,7 +6,7 @@
 /*   By: adpillia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 19:42:57 by adpillia          #+#    #+#             */
-/*   Updated: 2020/07/22 20:07:14 by adpillia         ###   ########.fr       */
+/*   Updated: 2020/07/23 11:13:22 by adpillia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <fcntl.h>
 # include <stdlib.h>
 # include "structs_def.h"
+# include <stdio.h>
 
 int		ft_strlen(char *str);
 int		ft_cmp(char c, char *str);
@@ -34,13 +35,9 @@ int		*ft_square_placement(int *map, t_bsq bsq, t_data file);
 int		ft_check_square_position(int *map, t_bsq bsq, t_data file);
 t_bsq	ft_go_bigger(t_bsq bsq, int *map, t_data file);
 t_bsq	ft_move(t_bsq bsq, int *map, t_data file);
-void	ft_magic(char *file, t_data input);
+void	ft_magic(t_buf buf);
 t_buf	ft_import_file(char *file);
 t_buf	swap(int fd, int i, char *output, char *temp);
 t_buf	get_stdin(char *file);
-t_bsq	ft_bigger_move_recursive(t_bsq bsq, int *map, t_data file);
-void	ft_print_data_file(t_data input);
-void	ft_print_data_bsq(t_bsq bsq);
-void	ft_print_map_numbers(int *map, t_data input);
 
 #endif

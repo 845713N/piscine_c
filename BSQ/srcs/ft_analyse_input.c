@@ -6,7 +6,7 @@
 /*   By: adpillia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/20 19:25:47 by adpillia          #+#    #+#             */
-/*   Updated: 2020/07/22 14:00:47 by adpillia         ###   ########.fr       */
+/*   Updated: 2020/07/23 12:27:21 by bzalugas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ int		*ft_recup_file(t_data input, int i, int skip, char *file)
 					map[i++] = 0;
 				else if (file[skip + i] == input.obstacle)
 					map[i++] = 1;
-				else if ((i + 1) % input.col == 0 && file[skip + i] != '\n')
+				else if (((i + 1) % input.col == 0 && file[skip + i] != '\n'))
 					input.error = -1;
 				else
 					skip++;

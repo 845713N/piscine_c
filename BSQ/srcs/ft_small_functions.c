@@ -6,7 +6,7 @@
 /*   By: adpillia <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/21 11:25:19 by adpillia          #+#    #+#             */
-/*   Updated: 2020/07/22 20:03:59 by adpillia         ###   ########.fr       */
+/*   Updated: 2020/07/23 12:26:13 by bzalugas         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,35 +46,29 @@ t_data	ft_complete_check_file(char *file, t_data input)
 	input = ft_analyse_first_line(input, 0, 0, file);
 	input = ft_analyse_file(file, input, fl, 0);
 	input.max = input.line * input.col;
+	free(fl);
 	return (input);
 }
 
-void	ft_magic(char *file, t_data input)
+void	ft_magic(t_buf buf)
 {
 	int		*map;
 	t_bsq	bsq;
+	t_data	input;
 
-	map = NULL;
-	map = ft_recup_file(input, 0, 0, file);
-	bsq = ft_initialise_square(input);
-	while (bsq.end == 0)
-		bsq = ft_move(bsq, map, input);
-//	bsq = ft_bigger_move_recursive(bsq, map, input);
-	map = ft_square_placement(map, bsq, input);
-	ft_display_output(map, input);
-	free(map);
-}
-
-t_bsq	ft_bigger_move_recursive(t_bsq bsq, int *map, t_data file)
-{
-	bsq = ft_go_bigger(bsq, map, file);
-	if (ft_check_square_position(map, bsq, file) == 1)
-		return (ft_bigger_move_recursive(bsq, map, file));
-	bsq = ft_move(bsq, map, file);
-	if (ft_check_square_position(map, bsq, file) == 0)
-		return (ft_bigger_move_recursive(bsq, map, file));
-	if (bsq.end == 1)
-		return (bsq);
+	input = ft_initialize_data();
+	input = ft_complete_check_file(buf.file, input);
+	if (input.error == 0)
+	{
+		map = NULL;
+		map = ft_recup_file(input, 0, 0, buf.file);
+		bsq = ft_initialise_square(input);
+		while (bsq.end == 0)
+			bsq = ft_move(bsq, map, input);
+		map = ft_square_placement(map, bsq, input);
+		ft_display_output(map, input);
+		free(map);
+	}
 	else
-		return (ft_bigger_move_recursive(bsq, map, file));
+		ft_display_error();
 }
